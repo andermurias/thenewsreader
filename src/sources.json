@@ -1,0 +1,48 @@
+{
+  "elcorreo.com": {
+    "name": "El Correo",
+    "rss": "https://www.elcorreo.com/rss/2.0/portada",
+    "scraping": {
+      "title": ".voc-detail h1",
+      "image": ".voc-detail .voc-main-figure img",
+      "content": ".voc-detail.voc-detail-grid"
+    }
+  },
+  "elcorreo.com-ultimas": {
+    "name": "El Correo [Últimas Hora]",
+    "rss": "https://www.elcorreo.com/rss/2.0/?section=ultima-hora",
+    "scraping": {
+      "title": ".voc-detail h1",
+      "image": ".voc-detail .voc-main-figure img",
+      "content": ".voc-detail.voc-detail-grid"
+    }
+  },
+  "elcorreo.com-todas": {
+    "name": "El Correo [Todas]",
+    "rss": "https://www.elcorreo.com/rss/2.0",
+    "scraping": {
+      "title": ".voc-detail h1",
+      "image": ".voc-detail .voc-main-figure img",
+      "content": ".voc-detail.voc-detail-grid"
+    }
+  },
+  "eldiario.es": {
+    "name": "eldiario.es",
+    "rss": "https://www.eldiario.es/rss/",
+    "scraping": {
+      "title": ".pg-headline",
+      "image": ".inset .media-holder img",
+      "content": ".pg-body"
+    }
+  },
+  "deia.eus": {
+    "name": "Deia",
+    "rss": "https://www.deia.eus/elementosInt/rss/22",
+    "scraping": {
+      "title": "h1",
+      "image": ".cuerpo_noticia .foto_desa img",
+      "content": ".cuerpo_noticia"
+    },
+    "encode": "latin1"
+  }
+}

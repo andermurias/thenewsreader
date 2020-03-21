@@ -21,4 +21,5 @@ app.get("/", (req, res) => res.sendFile("index.html"));
 
 app.listen(3001, function() {
   console.log("Example app listening on port 3001!");
+  process.send && process.send("ready");
 });

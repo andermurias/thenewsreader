@@ -1,0 +1,24 @@
+- name: Find the previous release
+  shell: 'ls -t {{ remote_releases_folder }} | head -n2 | tail -n1'
+  register: ls_output
+  tags:
+    - rollback
+    - never
+
+- name: Remove symlink
+  file:
+    dest: '{{ remote_project_folder }}/current'
+    state: absent
+  tags:
+    - rollback
+    - never
+
+- name: Create symlink to previous release folder
+  file:
+    src: '{{ remote_releases_folder }}/{{ item }}'
+    dest: '{{ remote_project_folder }}/current'
+    state: link
+  with_items: '{{ ls_output.stdout_lines }}'
+  tags:
+    - rollback
+    - never

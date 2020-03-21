@@ -1,0 +1,17 @@
+apps:
+  - script: "server/index.js"
+    name: "thenewsreader"
+    wait_ready: true
+    log_date_format: "YYYY-MM-DD HH:mm Z"
+    error_file: "./logs/pm2_error.log"
+    out_file: "./logs/pm2_out.log"
+    cwd: "/public_html/thenewsreader.om.nom.es"
+    env:
+      NODE_ENV: development
+      PORT: 80
+    env_production:
+      NODE_ENV: production
+      PORT: 80
+    instances: "max"
+    exec_mode: cluster
+    listen_timeout: 120000

@@ -1,0 +1,39 @@
+- name: Clone project to local deployment folder
+  git:
+    repo: "{{ repository }}"
+    dest: "{{ local_deployment_temporal_folder }}"
+    version: "{{ repository_branch }}"
+  delegate_to: 127.0.0.1
+  run_once: yes
+
+- name: Build The News Reader application in localhost
+  block:
+    - name: Install node dependencies
+      shell: yarn install
+      args:
+        chdir: "{{ local_deployment_temporal_folder }}"
+      delegate_to: 127.0.0.1
+      run_once: yes
+
+    - name: Build The News Reader
+      shell: yarn run build
+      args:
+        chdir: "{{ local_deployment_temporal_folder }}"
+      delegate_to: 127.0.0.1
+      run_once: yes
+
+- name: Remove project useless stuff
+  file:
+    state: absent
+    dest: "{{ local_deployment_temporal_folder }}/{{ item }}"
+  with_items:
+    - node_modules
+  delegate_to: 127.0.0.1
+  run_once: yes
+
+- name: Archive deployment folder
+  archive:
+    path: "{{ local_deployment_temporal_folder }}"
+    dest: "{{ local_deployment_temporal_folder }}.tgz"
+  delegate_to: 127.0.0.1
+  run_once: yes

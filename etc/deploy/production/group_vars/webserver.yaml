@@ -1,0 +1,18 @@
+---
+env_name: production
+
+repository: git@gitlab.andermurias.me:om.nom/the-news-reader.git
+repository_branch: master
+
+deploy_user: muriasnl
+deploy_port: 17177
+webserver_user: muriasnl
+project_name: thenewsreader
+remote_project_folder: /home/muriasnl/public_html/thenewsreader.om.nom.es
+domain: https://thenewsreader.om.nom.es
+amount_of_releases: 1
+
+local_deployment_temporal_folder: "/tmp/{{ project_name }}"
+remote_releases_folder: "{{ remote_project_folder }}/releases"
+remote_shared_folder: "{{ remote_project_folder }}/shared"
+datetime: "{{ ansible_date_time.iso8601_basic_short }}"

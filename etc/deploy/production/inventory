@@ -1,2 +1,0 @@
-[webserver]
-andermurias.me  ansible_ssh_port=17177 ansible_user=muriasnl

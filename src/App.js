@@ -6,6 +6,7 @@ import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 
 import PageIndex from "./templates/PageIndex";
 import Page from "./templates/Page";
+import ServicesIndex from "./templates/ServicesIndex";
 import Navbar from "./component/Navbar";
 
 const theme = createMuiTheme({
@@ -40,7 +41,7 @@ export default function App(props) {
             <PageIndex classes={classes} />
           </Route>
           <Route path="/">
-            <h1>HOLA</h1>
+            <ServicesIndex />
           </Route>
         </Switch>
       </Router>

@@ -6,6 +6,10 @@ import sanitizeHtml from "sanitize-html-react";
 
 import {makeStyles} from "@material-ui/core/styles";
 import {Typography, Button, Container} from "@material-ui/core";
+import CallMadeOutlinedIcon from "@material-ui/icons/CallMadeOutlined";
+import PublicOutlinedIcon from "@material-ui/icons/PublicOutlined";
+
+import sources from "../sources.json";
 
 const sanitizeParams = {
   allowedTags: [
@@ -74,13 +78,15 @@ const useStyles = makeStyles({
     margin: "0 auto",
   },
   new: {
-    textAlign: "justify",
+    textAlign: "left",
     // lineHeight: "1.5em",
   },
   seeonline: {
     marginTop: 20,
     width: "100%",
     marginBottom: 20,
+    textTransform: "inherit",
+    maxWidth: 600,
   },
   loader: {
     width: "100%",
@@ -95,6 +101,7 @@ const useStyles = makeStyles({
   },
   title: {
     marginBottom: 40,
+    textAlign: "center",
   },
   html: {
     "& img": {
@@ -125,6 +132,8 @@ const Page = ({match}) => {
 
   let [data, setData] = useState(null);
 
+  const source = sources[match.params.source];
+
   useEffect(() => {
     (async () => {
       setData(await getPageData(url, match.params.source));
@@ -135,17 +144,26 @@ const Page = ({match}) => {
     <Container maxWidth="md" className={classes.container}>
       {data ? (
         <div className={classes.new}>
-          <Typography variant="h3" className={classes.title}>
+          <Typography variant="h4" className={classes.title}>
             {data.title}
           </Typography>
+          <Button
+            endIcon={<CallMadeOutlinedIcon />}
+            startIcon={<PublicOutlinedIcon />}
+            target="_blank"
+            href={url}
+            variant="outlined"
+            color="secondary"
+            size="large"
+            className={classes.seeonline}
+          >
+            Ver en {source.url}
+          </Button>
           {/* <img src={data.img} alt={data.h1} className={classes.img} /> */}
           {/* <Typography className={classes.cardDate} variant="body2" component="p" color="textSecondary">
             {moment(data.isoDate).format("LLLL")}
           </Typography> */}
           <div className={classes.html} dangerouslySetInnerHTML={{__html: sanitize(data.content)}} />
-          <Button target="_blank" href={url} variant="outlined" color="secondary" className={classes.seeonline}>
-            Ir a la web
-          </Button>
         </div>
       ) : (
         <h4 className={classes.loader}>Cargando...</h4>

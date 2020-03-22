@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {makeStyles} from "@material-ui/core/styles";
 
-import {Grid, Container} from "@material-ui/core";
-import PostCard from "../component/PostCard";
+import {Container, List} from "@material-ui/core";
+// import PostCard from "../component/PostCard";
 import {useParams, withRouter} from "react-router-dom";
+import PostList from "../component/PostList";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   loader: {
     width: "100%",
     textAlign: "center",
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
   container: {
     marginTop: 30,
   },
-});
+}));
 
 const getFeed = async source => {
   const response = await axios.get(process.env.REACT_APP_BACKEND_URL + "/api/feed-reader?source=" + source, {});
@@ -38,10 +39,23 @@ const PageIndex = ({match}) => {
     };
   }, [match.params.source]);
 
-  let isFirst = true;
+  // let isFirst = true;
   return (
     <Container maxWidth="lg" className={classes.container}>
-      <Grid container spacing={3} alignItems="stretch">
+      <List className={classes.list}>
+        {data &&
+          data.map((post, i) => (
+            <PostList
+              title={post.title}
+              content={post.content}
+              isoDate={post.isoDate}
+              link={post.link}
+              source={query.source}
+              key={i}
+            />
+          ))}
+      </List>
+      {/* <Grid container spacing={3} alignItems="stretch">
         {data !== null ? (
           data.map((post, i) => {
             const gridItem = (
@@ -61,7 +75,7 @@ const PageIndex = ({match}) => {
         ) : (
           <h4 className={classes.loader}>Cargando...</h4>
         )}
-      </Grid>
+      </Grid> */}
     </Container>
   );
 };

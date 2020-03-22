@@ -1,8 +1,0 @@
-- name: Check Connection to server
-  local_action: shell ssh {{ deploy_user }}@{{ inventory_hostname }} -p {{ deploy_port }} "echo Connection Success"
-
-- name: Create deployment folder
-  deploy_helper:
-    path: "{{ remote_project_folder }}"
-    state: present
-  tags: create_deploy_environment

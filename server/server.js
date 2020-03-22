@@ -5,6 +5,8 @@ import cors from "cors";
 
 var app = express();
 
+app.use(express.static("build"));
+
 app.use(
   cors({
     origin: new RegExp("^https?://localhost(:[0-9]+)?$"),
@@ -13,11 +15,9 @@ app.use(
   })
 );
 
-app.use(express.static("build"));
-
 app.use("/api", feedReader);
 app.use("/api", scrapReader);
-app.get(/^(?!\/(api|static).*$).*?/, (req, res) => res.sendFile("index.html"));
+app.get("*", (req, res) => res.sendFile("index.html", {root: __dirname + "/../build"}));
 
 const port = process.env.PORT || 3001;
 

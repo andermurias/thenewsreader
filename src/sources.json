@@ -2,6 +2,7 @@
   "elcorreo.com": {
     "name": "El Correo",
     "rss": "https://www.elcorreo.com/rss/2.0/portada",
+    "url": "https://www.elcorreo.com",
     "scraping": {
       "title": ".voc-detail h1",
       "image": ".voc-detail .voc-main-figure img",
@@ -9,8 +10,9 @@
     }
   },
   "elcorreo.com-ultimas": {
-    "name": "El Correo [Últimas Hora]",
+    "name": "El Correo [Última Hora]",
     "rss": "https://www.elcorreo.com/rss/2.0/?section=ultima-hora",
+    "url": "https://www.elcorreo.com",
     "scraping": {
       "title": ".voc-detail h1",
       "image": ".voc-detail .voc-main-figure img",
@@ -20,6 +22,7 @@
   "elcorreo.com-todas": {
     "name": "El Correo [Todas]",
     "rss": "https://www.elcorreo.com/rss/2.0",
+    "url": "https://www.elcorreo.com",
     "scraping": {
       "title": ".voc-detail h1",
       "image": ".voc-detail .voc-main-figure img",
@@ -29,6 +32,7 @@
   "eldiario.es": {
     "name": "eldiario.es",
     "rss": "https://www.eldiario.es/rss/",
+    "url": "https://www.eldiario.es",
     "scraping": {
       "title": ".pg-headline",
       "image": ".inset .media-holder img",
@@ -38,11 +42,102 @@
   "deia.eus": {
     "name": "Deia",
     "rss": "https://www.deia.eus/elementosInt/rss/22",
+    "url": "https://www.deia.eus",
     "scraping": {
       "title": "h1",
       "image": ".cuerpo_noticia .foto_desa img",
       "content": ".cuerpo_noticia"
     },
     "encode": "latin1"
+  },
+  "elconfidencial.com": {
+    "name": "El Confidencial [España]",
+    "rss": "https://rss.elconfidencial.com/espana/",
+    "url": "https://www.elconfidencial.com",
+    "scraping": {
+      "title": ".news-header-tit",
+      "image": ".news-header-img-figure img",
+      "content": ".news-body-center"
+    }
+  },
+  "elconfidencial.com-mundo": {
+    "name": "El Confidencial [Mundo]",
+    "rss": "https://rss.elconfidencial.com/mundo/",
+    "url": "https://www.elconfidencial.com",
+    "scraping": {
+      "title": ".news-header-tit",
+      "image": ".news-header-img-figure img",
+      "content": ".news-body-center"
+    }
+  },
+  "elespanol.com": {
+    "name": "El Español",
+    "rss": "https://cronicaglobal.elespanol.com/es/rss/general-001.xml",
+    "url": "https://www.elespanol.com",
+    "scraping": {
+      "title": ".news_ext_title3",
+      "image": ".img_imgs_news_ext img",
+      "content": ".news_ext_body2"
+    }
+  },
+  "elindependiente.com": {
+    "name": "El Independiente",
+    "rss": "https://www.elindependiente.com/feed/",
+    "url": "https://www.elindependiente.com",
+    "scraping": {
+      "title": "#content_header h1",
+      "image": ".article-content img",
+      "content": "#noticia-completa"
+    }
+  },
+  "okdiario.com": {
+    "name": "OK Diario",
+    "rss": "https://okdiario.com/feed",
+    "url": "https://okdiario.com",
+    "scraping": {
+      "title": "h1.entry-title",
+      "image": ".main-image img",
+      "content": ".entry-content"
+    }
+  },
+  "libertaddigital.com": {
+    "name": "Libertad Digital",
+    "rss": "http://feeds2.feedburner.com/libertaddigital/portada?format=xml",
+    "url": "https://www.libertaddigital.com",
+    "scraping": {
+      "title": ".titular h1",
+      "image": ".contenedor img",
+      "content": ".texto.principal"
+    }
+  },
+  "elpais.com": {
+    "name": "El País [Portada]",
+    "rss": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada",
+    "url": "https://elpais.com",
+    "scraping": {
+      "title": "h1",
+      "image": "article img",
+      "content": ".articulo-cuerpo, .article_body, .articulo-galeria"
+    }
+  },
+  "elpais.com-max-vistas": {
+    "name": "El País [Más Vistas]",
+    "rss": "http://ep00.epimg.net/rss/tags/noticias_mas_vistas.xml",
+    "url": "https://elpais.com",
+    "scraping": {
+      "title": "h1",
+      "image": "article img",
+      "content": ".articulo-cuerpo, .article_body, .articulo-galeria"
+    }
+  },
+  "elpais.com-ultima-hora": {
+    "name": "El País [Última Hora]",
+    "rss": "http://ep00.epimg.net/rss/tags/ultimas_noticias.xml",
+    "url": "https://elpais.com",
+    "scraping": {
+      "title": "h1",
+      "image": "article img",
+      "content": ".articulo-cuerpo, .article_body, .articulo-galeria"
+    }
   }
 }

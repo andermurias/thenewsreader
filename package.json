@@ -14,8 +14,6 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "html-entities": "^1.2.1",
-    "iconv": "^2.3.5",
     "regenerator-runtime": "^0.13.5",
     "rss-parser": "^3.7.5"
   },
@@ -39,7 +37,9 @@
     "start": "node server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker:build": "./etc/docker/build.sh pro",
+    "docker:push": "./etc/docker/push.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -3,9 +3,9 @@ apps:
     name: "thenewsreader"
     wait_ready: true
     log_date_format: "YYYY-MM-DD HH:mm Z"
-    error_file: "./logs/pm2_error.log"
-    out_file: "./logs/pm2_out.log"
-    cwd: "/public_html/thenewsreader.om.nom.es"
+    error_file: "/var/log/logs/pm2_error.log"
+    out_file: "/var/log/logs/pm2_out.log"
+    cwd: "/var/www"
     env:
       NODE_ENV: development
       PORT: 80

@@ -17,9 +17,11 @@ app.use(express.static("build"));
 
 app.use("/api", feedReader);
 app.use("/api", scrapReader);
-app.get("/", (req, res) => res.sendFile("index.html"));
+app.get(/^(?!\/(api|static).*$).*?/, (req, res) => res.sendFile("index.html"));
 
-app.listen(3001, function() {
-  console.log("Example app listening on port 3001!");
+const port = process.env.PORT || 3001;
+
+app.listen(port, function() {
+  console.log("The News Reader - Launcher on " + port);
   process.send && process.send("ready");
 });

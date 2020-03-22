@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  server:
+    container_name: thenewsreader
+    image: eu.gcr.io/lin3s-web-2019/lin3s:0.0.4
+    ports:
+      - "8080:8080"
+    networks:
+      - thenewsreader_net
+    restart: unless-stopped
+
+networks:
+  thenewsreader_net: ~

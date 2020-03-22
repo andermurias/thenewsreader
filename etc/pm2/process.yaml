@@ -7,11 +7,8 @@ apps:
     out_file: "/var/log/logs/pm2_out.log"
     cwd: "/var/www"
     env:
-      NODE_ENV: development
-      PORT: 80
-    env_production:
       NODE_ENV: production
       PORT: 80
-    instances: "max"
+    instances: 1
     exec_mode: cluster
     listen_timeout: 120000

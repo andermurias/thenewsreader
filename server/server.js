@@ -2,10 +2,12 @@ import express from "express";
 import feedReader from "./api/feedRead";
 import scrapReader from "./api/scrapReader";
 import cors from "cors";
+import secure from "express-force-https";
 
 var app = express();
 
 app.use(express.static("build"));
+app.use(secure);
 
 app.use(
   cors({

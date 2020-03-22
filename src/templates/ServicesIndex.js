@@ -1,7 +1,7 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 
-import {Container, List, Typography, ListItem, ListItemText, Grid, colors} from "@material-ui/core";
+import {Container, List, Typography, ListItem, ListItemText, Grid, colors, Button} from "@material-ui/core";
 import {Link} from "react-router-dom";
 
 import sources from "../sources.json";
@@ -43,7 +43,12 @@ const ServicesIndex = () => {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Typography variant="h2" component="h1">
-            Bienvenido a TheNewsReader
+            Bienvenido a <br />
+            The
+            <wbr />
+            News
+            <wbr />
+            Reader
           </Typography>
           <br />
           <br />
@@ -58,10 +63,18 @@ const ServicesIndex = () => {
           <br />
           <br />
           <Typography variant="subtitle1" component="p">
-            Si estás interesado en el código, este es el repositorio, esta es la url:
+            Si estás interesado en el código, este es su repositorio:
           </Typography>
+          <br />
           <Typography variant="subtitle1" component="p">
-            <a href="/">https://github.com</a>
+            <Button
+              component="a"
+              variant="outlined"
+              color="secondary"
+              href="https://github.com/andermurias/thenewsreader"
+            >
+              GitHub
+            </Button>
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>

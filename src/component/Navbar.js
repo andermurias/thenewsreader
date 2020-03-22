@@ -4,6 +4,7 @@ import clsx from "clsx";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 
 import {
   Toolbar,
@@ -18,12 +19,13 @@ import {
   ListItemText,
   List,
   ListItemIcon,
+  Hidden,
 } from "@material-ui/core";
 import {Link, withRouter, matchPath} from "react-router-dom";
 
 import sources from "../sources.json";
 
-const drawerWidth = 400;
+const drawerWidth = 360;
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -34,15 +36,22 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: "100%",
+    maxWidth: drawerWidth,
   },
   drawerHeader: {
     display: "flex",
     alignItems: "center",
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
+  },
+  listItemSelected: {
+    color: theme.palette.secondary.main,
+    backgroundColor: "transparent!important",
+    "& path": {
+      fill: theme.palette.secondary.main,
+    },
   },
 }));
 
@@ -82,13 +91,15 @@ const Navbar = () => {
           <Button component={Link} to="/" variant="outlined">
             The News Reader
           </Button>
-          {params && params.source !== "undefined" && sources.hasOwnProperty(params.source) ? (
-            <Button component={Link} to={"/" + params.source}>
-              {sources[params.source].name}
-            </Button>
-          ) : (
-            ""
-          )}
+          <Hidden mdDown>
+            {params && params.source !== "undefined" && sources.hasOwnProperty(params.source) ? (
+              <Button component={Link} to={"/" + params.source}>
+                {sources[params.source].name}
+              </Button>
+            ) : (
+              ""
+            )}
+          </Hidden>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -100,17 +111,37 @@ const Navbar = () => {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
-          Origenes de contenido
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
+        <div className={classes.drawerHeader} onClick={handleDrawerClose}>
+          TheNewsReader
+          <IconButton>{theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}</IconButton>
         </div>
         <Divider />
         <List>
+          <ListItem
+            button
+            to="/"
+            selected={params === null}
+            component={Link}
+            onClick={handleDrawerClose}
+            classes={{selected: classes.listItemSelected}}
+          >
+            <ListItemIcon>
+              <HomeOutlinedIcon color="secondary" />
+            </ListItemIcon>
+            <ListItemText primary="Inicio" />
+          </ListItem>
+          <Divider variant="inset" />
           {Object.keys(sources).map((slug, i) => {
             return (
-              <ListItem button key={i} to={"/" + slug} component={Link} onClick={handleDrawerClose}>
+              <ListItem
+                button
+                key={i}
+                to={"/" + slug}
+                selected={params && slug === params.source}
+                component={Link}
+                onClick={handleDrawerClose}
+                classes={{selected: classes.listItemSelected}}
+              >
                 <ListItemIcon>
                   <ChevronRightIcon />
                 </ListItemIcon>

@@ -10,6 +10,13 @@ import ServicesIndex from "./templates/ServicesIndex";
 import Navbar from "./component/Navbar";
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiListItem: {
+      selected: {
+        color: "#ef6c00",
+      },
+    },
+  },
   palette: {
     primary: {
       main: "#ffa726",

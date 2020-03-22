@@ -22,11 +22,11 @@ const useStyles = makeStyles(theme => ({
     color: colors.grey[900],
   },
   date: {
-    color: colors.grey[600],
+    color: theme.palette.secondary.main,
   },
   text: {
     textDecoration: "none",
-    color: colors.grey[600],
+    color: colors.grey[500],
   },
   listitem: {
     alignItems: "flex-start",

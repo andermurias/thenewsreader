@@ -71,7 +71,7 @@ const getPageData = async (url, source) => {
 };
 const useStyles = makeStyles({
   img: {
-    maxWidth: "100%",
+    width: "100%",
     marginTop: "20px",
     marginBottom: "20px",
     display: "block",
@@ -147,6 +147,7 @@ const Page = ({match}) => {
           <Typography variant="h4" className={classes.title}>
             {data.title}
           </Typography>
+          {data.content.indexOf("<img") === -1 ? <img src={data.img} alt={data.h1} className={classes.img} /> : ""}
           <Button
             endIcon={<CallMadeOutlinedIcon />}
             startIcon={<PublicOutlinedIcon />}
@@ -159,7 +160,6 @@ const Page = ({match}) => {
           >
             Ver en {source.url}
           </Button>
-          {/* <img src={data.img} alt={data.h1} className={classes.img} /> */}
           {/* <Typography className={classes.cardDate} variant="body2" component="p" color="textSecondary">
             {moment(data.isoDate).format("LLLL")}
           </Typography> */}

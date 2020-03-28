@@ -1,8 +1,15 @@
 import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
-
-import {Container, List, Typography, ListItem, ListItemText, Grid, colors, Button} from "@material-ui/core";
 import {Link} from "react-router-dom";
+
+import Container from "@material-ui/core/Container";
+import List from "@material-ui/core/List";
+import Typography from "@material-ui/core/Typography";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Grid from "@material-ui/core/Grid";
+import grey from "@material-ui/core/colors/grey";
+import Button from "@material-ui/core/Button";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
 import sources from "../sources.json";
 
@@ -28,11 +35,11 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     textDecoration: "none",
-    color: colors.grey[900],
+    color: grey[900],
   },
   text: {
     textDecoration: "none",
-    color: colors.grey[600],
+    color: grey[600],
   },
 }));
 

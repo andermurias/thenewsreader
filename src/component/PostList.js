@@ -1,17 +1,17 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {makeStyles} from "@material-ui/core/styles";
 import moment from "moment";
 import localization from "moment/locale/es";
-import {
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  IconButton,
-  Divider,
-  colors,
-  Typography,
-} from "@material-ui/core";
+
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
+import Divider from "@material-ui/core/Divider";
+import grey from "@material-ui/core/colors/grey";
+import Typography from "@material-ui/core/Typography";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
 import CallMadeOutlinedIcon from "@material-ui/icons/CallMadeOutlined";
 
 moment.locale("es", localization);
@@ -19,14 +19,14 @@ moment.locale("es", localization);
 const useStyles = makeStyles(theme => ({
   title: {
     textDecoration: "none",
-    color: colors.grey[900],
+    color: grey[900],
   },
   date: {
     color: theme.palette.secondary.main,
   },
   text: {
     textDecoration: "none",
-    color: colors.grey[500],
+    color: grey[500],
   },
   listitem: {
     alignItems: "flex-start",

@@ -1,5 +1,4 @@
 import express from "express";
-import Parser from "rss-parser";
 import axios from "axios";
 import cheerio from "cheerio";
 
@@ -9,12 +8,14 @@ const router = express.Router();
 
 router.get("/scrap-url", async (req, res, next) => {
   let data = {
+    title: "",
     url: req.query.url,
     img: "",
     content: "",
   };
 
   if (!sources.hasOwnProperty(req.query.source)) {
+    res.status(404);
     res.send(data);
     next();
   }
@@ -22,14 +23,16 @@ router.get("/scrap-url", async (req, res, next) => {
   const source = sources[req.query.source];
 
   const response = await axios.get(req.query.url, {responseType: "arraybuffer"});
+
   if (response.status !== 200) {
-    res.send("Error fetching page");
+    res.status(response.status);
+    res.send(data);
   }
 
-  // res.send(data);
   const document = cheerio.load(response.data.toString(source.encode || "utf-8"));
 
   const scrapContent = document(source.scraping.content);
+
   if (scrapContent.length) {
     data.content = document(scrapContent[0]).html();
   }

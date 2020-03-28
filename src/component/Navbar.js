@@ -1,27 +1,26 @@
 import React from "react";
 import clsx from "clsx";
 
+import {Link, withRouter, matchPath} from "react-router-dom";
+
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 
-import {
-  Toolbar,
-  Button,
-  AppBar,
-  IconButton,
-  makeStyles,
-  Drawer,
-  useTheme,
-  Divider,
-  ListItem,
-  ListItemText,
-  List,
-  ListItemIcon,
-  Hidden,
-} from "@material-ui/core";
-import {Link, withRouter, matchPath} from "react-router-dom";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import AppBar from "@material-ui/core/AppBar";
+import IconButton from "@material-ui/core/IconButton";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import Drawer from "@material-ui/core/Drawer";
+import useTheme from "@material-ui/core/styles/useTheme";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import List from "@material-ui/core/List";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import Hidden from "@material-ui/core/Hidden";
 
 import sources from "../sources.json";
 
@@ -55,17 +54,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Navbar = () => {
-  const classes = useStyles();
-  const theme = useTheme();
-
+const getParams = () => {
   const match = matchPath(window.location.pathname, {
     path: "/:source",
   });
 
-  const params = match ? match.params : null;
+  return match ? match.params : null;
+};
+
+const Navbar = () => {
+  const classes = useStyles();
+  const theme = useTheme();
 
   const [open, setOpen] = React.useState(false);
+
+  const params = getParams();
 
   const handleDrawerOpen = () => {
     setOpen(true);

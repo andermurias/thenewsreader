@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
-import {makeStyles} from "@material-ui/core/styles";
-
-import {Container, List} from "@material-ui/core";
-// import PostCard from "../component/PostCard";
 import {useParams, withRouter} from "react-router-dom";
+
+import axios from "axios";
+
+import Container from "@material-ui/core/Container";
+import List from "@material-ui/core/List";
+
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
 import PostList from "../component/PostList";
 
 const useStyles = makeStyles(theme => ({

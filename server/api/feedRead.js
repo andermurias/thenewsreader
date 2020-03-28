@@ -21,6 +21,8 @@ const cleanXml = (xml, url) => {
   return processedXML;
 };
 
+const getExcertp = content => truncate(stripTags(content), 35) + "...";
+
 const getFeed = async source => {
   const selctedSource = sources[source];
 
@@ -44,19 +46,19 @@ const stripTags = text => text.replace(/(<([^>]+)>)/gi, "");
 router.get("/feed-reader", async (req, res) => {
   const source = req.query.source;
 
-  if (sources.hasOwnProperty(source)) {
-    const feed = await getFeed(source);
-
-    let processedFeed = feed.items.map(item => {
-      return {
-        ...item,
-        content: truncate(stripTags(item.content), 35) + "...",
-      };
-    });
-    res.send(processedFeed);
-  } else {
+  if (!sources.hasOwnProperty(source)) {
     res.send([]);
   }
+
+  const feed = await getFeed(source);
+
+  let processedFeed = feed.items.map(item => {
+    return {
+      ...item,
+      content: getExcertp(item.content),
+    };
+  });
+  res.send(processedFeed);
 });
 
 export default router;

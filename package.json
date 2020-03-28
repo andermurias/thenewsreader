@@ -40,7 +40,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "docker:build": "./etc/docker/build.sh pro",
-    "docker:push": "./etc/docker/push.sh"
+    "docker:push": "./etc/docker/push.sh",
+    "docker:up": "./etc/docker/up.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

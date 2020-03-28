@@ -1,8 +1,9 @@
 import express from "express";
-import feedReader from "./api/feedRead";
-import scrapReader from "./api/scrapReader";
 import cors from "cors";
 import secure from "express-force-https";
+
+import feedReader from "./api/feedRead";
+import scrapReader from "./api/scrapReader";
 
 var app = express();
 

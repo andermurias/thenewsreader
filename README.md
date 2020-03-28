@@ -1,5 +1,7 @@
 # The News Reader
 
+[https://thenewsreader.om.nom.es](https://thenewsreader.om.nom.es)
+
 ## `.env` Vars
 
 ### `REACT_APP_BACKEND_URL`
@@ -9,7 +11,6 @@ This contains the URL that the front will use for all the API requests
 ### `PORT`
 
 This will be the port that will use express and the development back server
-
 
 ---
 
@@ -33,7 +34,7 @@ Launches the `./etc/docker/build.sh` script, that creates the image for the code
 
 Launches the `./etc/docker/push.sh` script, that pushes the image to the registry
 
-----
+---
 
 ### `yarn start`
 

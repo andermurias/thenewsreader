@@ -1,6 +1,5 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import {makeStyles} from "@material-ui/core/styles";
 
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 
@@ -27,29 +26,37 @@ const theme = createMuiTheme({
   },
 });
 
-const useStyles = makeStyles({
-  container: {
-    paddingTop: "30px",
+const routerConfiguration = [
+  {
+    route: "/:source/page/:url",
+    component: Page,
+    props: [],
   },
-});
+  {
+    route: "/:source",
+    component: PageIndex,
+    props: [],
+  },
+  {
+    route: "/",
+    component: ServicesIndex,
+    props: [],
+  },
+];
 
 export default function App(props) {
-  const classes = useStyles(props);
-
   return (
     <MuiThemeProvider theme={theme}>
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/:source/page/:url">
-            <Page classes={classes} />
-          </Route>
-          <Route path="/:source">
-            <PageIndex classes={classes} />
-          </Route>
-          <Route path="/">
-            <ServicesIndex />
-          </Route>
+          {routerConfiguration.map((route, i) => {
+            return (
+              <Route path={route.route} key={i}>
+                <route.component />
+              </Route>
+            );
+          })}
         </Switch>
       </Router>
     </MuiThemeProvider>

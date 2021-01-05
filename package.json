@@ -8,7 +8,7 @@
     "@babel/plugin-transform-async-to-generator": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "@babel/register": "^7.8.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "cheerio": "^1.0.0-rc.3",
     "cors": "^2.8.5",
